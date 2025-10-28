@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinta Hercca - Sabores Tradicionales</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        :root {
+            --primary: #2E7D32;
+            --secondary: #FF9800;
+            --accent: #795548;
+            --light: #F5F5F5;
+            --dark: #333333;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3') center/cover;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .slogan {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background: var(--secondary);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Secciones */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+        }
+
+        /* Nosotros */
+        .about {
+            background: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Menú */
+        .menu {
+            background: var(--light);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .menu-item h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Propuesta de Valor */
+        .values {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .value-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Galería */
+        .gallery {
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            height: 200px;
+            background: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Contacto */
+        .contact {
+            background: var(--light);
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .whatsapp-button {
+            background: #25D366;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .about {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                padding: 60px 20px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Hero Section -->
+    <header>
+        <div class="logo">🍃 Quinta Hercca</div>
+        <h1 class="slogan">Sabores Tradicionales en un Entorno Natural</h1>
+        <p>Disfruta de la auténtica comida cusqueña en nuestro espacio campestre familiar</p>
+        <button class="cta-button" onclick="scrollToSection('menu')">Ver Menú</button>
+    </header>
+
+    <!-- Nosotros Section -->
+    <section class="about" id="nosotros">
+        <div>
+            <h2 class="section-title">Nuestra Historia</h2>
+            <p>Somos un emprendimiento familiar que nació durante la pandemia, dedicado a preservar los sabores tradicionales de Hercca-Sicuani. Usamos productos 100% naturales cosechados por nuestra comunidad.</p>
+            <br>
+            <p><strong>Margarita Yapo Cahuana:</strong> "Ofrecemos calidad, cantidad y todo a un precio accesible. Mi local tiene las tres B: Bueno, Buenazo y Barato."</p>
+        </div>
+        <div>
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3" alt="Quinta Hercca" class="about-image">
+        </div>
+    </section>
+
+    <!-- Menú Section -->
+    <section class="menu" id="menu">
+        <h2 class="section-title">Nuestro Menú Tradicional</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <h3>🍖 Cuy al Horno</h3>
+                <p>Cuy criado naturalmente, horneado a la manera tradicional</p>
+                <div class="price">S/ 35.00</div>
+            </div>
+            <div class="menu-item">
+                <h3>🍗 Pollo a la Leña</h3>
+                <p>Pollo marinado con hierbas locales y horneado en horno artesanal</p>
+                <div class="price">S/ 25.00</div>
+            </div>
+            <div class="menu-item">
+                <h3>🐟 Trucha Fresca</h3>
+                <p>Trucha de río preparada con técnicas tradicionales</p>
+                <div class="price">S/ 20.00</div>
+            </div>
+            <div class="menu-item">
+                <h3>🐷 Lechón Horneado</h3>
+                <p>Lechón horneado por 8 horas para máxima suavidad</p>
+                <div class="price">S/ 30.00</div>
+            </div>
+            <div class="menu-item">
+                <h3>🥓 Chicharrón</h3>
+                <p>Chicharrón crocante con maíz andino</p>
+                <div class="price">S/ 18.00</div>
+            </div>
+            <div class="menu-item">
+                <h3>🍹 Bebidas Naturales</h3>
+                <p>Jugos y refrescos de frutas de la región</p>
+                <div class="price">S/ 5.00 - S/ 8.00</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Propuesta de Valor -->
+    <section class="values">
+        <h2 class="section-title">¿Por Qué Elegirnos?</h2>
+        <div class="value-cards">
+            <div class="value-card">
+                <h3>🌱 Productos Naturales</h3>
+                <p>Usamos productos libres de químicos, cosechados por comuneros locales</p>
+            </div>
+            <div class="value-card">
+                <h3>🏺 Horno Artesanal</h3>
+                <p>Nuestro horno tradicional garantiza el sabor auténtico de antaño</p>
+            </div>
+            <div class="value-card">
+                <h3>🌄 Entorno Natural</h3>
+                <p>Disfruta de un espacio campestre ideal para desconectar del estrés urbano</p>
+            </div>
+            <div class="value-card">
+                <h3>💰 Precios Justos</h3>
+                <p>Ofrecemos precios accesibles para todos, apoyando a la comunidad</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+    <section class="gallery">
+        <h2 class="section-title">Nuestro Espacio</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3" alt="Espacio campestre">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1559305616-3f99cd43e353?ixlib=rb-4.0.3" alt="Comida tradicional">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1578474846611-2fea69fda345?ixlib=rb-4.0.3" alt="Horno artesanal">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3" alt="Ambiente familiar">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="contact" id="contacto">
+        <h2 class="section-title">Visítanos</h2>
+        <p>📍 Hercca, Sicuani - Cusco, Perú</p>
+        <p>⏰ Abierto fines de semana y feriados</p>
+        
+        <div class="contact-info">
+            <div class="contact-card">
+                <h3>📞 Reserva por WhatsApp</h3>
+                <p>Haz tu reserva y consulta por nuestros platos</p>
+                <a href="https://wa.me/519XXXXXX?text=Hola,%20quisiera%20reservar%20en%20Quinta%20Hercca" class="whatsapp-button">
+                    💬 Escribenos por WhatsApp
+                </a>
+            </div>
+            <div class="contact-card">
+                <h3>🌐 Síguenos en Redes</h3>
+                <p>Mantente actualizado con nuestras novedades</p>
+                <p>📷 Instagram: @quintahercca</p>
+                <p>👥 Facebook: Quinta Hercca</p>
+            </div>
+            <div class="contact-card">
+                <h3>🚗 Cómo Llegar</h3>
+                <p>Estamos a 15 minutos del centro de Sicuani</p>
+                <p>🏞️ Entrada por la carretera a Hercca</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Quinta Hercca - Todos los derechos reservados</p>
+        <p>🍃 Sabores que conectan con nuestras raíces 🍃</p>
+    </footer>
+
+    <script>
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+        
+        // Animación simple al hacer scroll
+        window.addEventListener('scroll', function() {
+            const elements = document.querySelectorAll('.menu-item, .value-card, .contact-card');
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect();
+                if(position.top < window.innerHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Inicializar animaciones
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.menu-item, .value-card, .contact-card');
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+        });
+    </script>
+</body>
+</html>
